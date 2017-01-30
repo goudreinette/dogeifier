@@ -6,9 +6,9 @@ def dogeify(text)
   doge_words = ['many', 'such', 'wow', 'so']
   colors = ['red', 'green', 'blue', 'yellow', 'pink', 'orange']
 
-  text.split ' '.map do |w|
+  text.split(' ').map do |w|
     if articles.include? w.downcase
-      "<span style='color: #{colors.sample}'>
+      "<span class='comicsans' style='color: #{colors.sample}'>
         #{doge_words.sample}
        </span>"
     else
