@@ -2,6 +2,8 @@ require 'sinatra'
 require 'dogeify/all'
 require 'sinatra-websocket'
 
+set :server, 'thin'
+set :sockets, []
 
 get '/' do
   if !request.websocket?

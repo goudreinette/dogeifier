@@ -1,1 +1,1 @@
-web: ruby main.rb
+web: bundle exec thin start
