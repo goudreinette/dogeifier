@@ -1,8 +1,59 @@
-<h1>Dogeifier</h1>
-<img src="https://media.giphy.com/media/54Vj1kxvgyF4k/giphy.gif">
-<form method="post">
-  <textarea name="text" placeholder="Text to dogeify"></textarea>
-  <button type="submit">
-    Dogeify
-  </button>
-</form>
+    <h1 class="ui dividing header">Chat with Doge</h1>
+     
+   <div class="comments">
+  <form class="ui reply form" id="form">
+    <div class="field">
+      <textarea placeholder="Chat with Doge..."></textarea>
+    </div>
+    <div class="ui blue button" id="send">
+      <label>Add Reply</label>
+    </div>
+  </form>
+  </div>
+
+
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/semantic.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <script type="text/javascript">
+    function addMessage (isDoge, message) {
+      $(`<div class="comment">
+            <a class="avatar">
+              <img src="${isDoge ? 'doge' : 'you'}.png"/>
+            </a>
+            <div class="content">
+              <a class="author">${isDoge ? 'Doge' : 'You'}</a>
+              <div class="text">${message}</div>
+            </div>
+         </div>`).insertBefore('form')
+    }
+
+
+
+    $(() => {
+        var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
+
+        ws.onmessage = function(m) { 
+          setTimeout(() => addMessage(true, m.data), Math.random() * 2000);
+        };
+
+
+        function send () {
+          ws.send($('textarea').val())
+          addMessage(false, $('textarea').val())
+          $('textarea').val('')
+        }
+
+
+
+        $('#send').click(send)
+        $('form').keypress(function (e) {
+          if (e.which == 13) {
+            send()
+            return false;  
+          }
+        });
+      });
+  </script>
