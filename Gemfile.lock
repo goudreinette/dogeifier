@@ -11,6 +11,23 @@ GEM
       eventmachine (>= 0.12.9)
     engtagger (0.2.1)
     eventmachine (1.2.3)
+    faraday (0.12.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.11.0.1)
+      faraday (>= 0.7.4, < 1.0)
+    faraday_middleware-parse_oj (0.3.1)
+      faraday (~> 0.9)
+      faraday_middleware (>= 0.9.1, < 1.0)
+      oj (~> 2.0)
+    giphy (3.0.0)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
+      faraday_middleware-parse_oj (~> 0.3)
+      launchy (~> 2.4)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    multipart-post (2.0.0)
+    oj (2.18.5)
     public_suffix (2.0.5)
     rack (2.0.1)
     sinatra-websocket (0.3.1)
@@ -27,6 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   dogeify
+  giphy
   sinatra-websocket
 
 BUNDLED WITH
