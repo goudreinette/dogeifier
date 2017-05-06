@@ -11,8 +11,9 @@ def get_gif msg
   tgr = EngTagger.new
   tagged = tgr.add_tags(msg)
   nouns = tgr.get_nouns(tagged)
-  gif = Giphy.random("doge #{nouns ? nouns.keys.join(' ') : ''}")
-  "<img style='background-image: url(#{gif.image_url});' width='#{gif.image_width}' height='#{gif.image_height}'/>"
+  nouns_str = nouns ? nouns.keys.join(' ') : ''
+  gif = Giphy.search("doge #{nouns_str}").sample.fixed_width_image
+  "<img style='background-image: url(#{gif.url});' width='#{gif.width}' height='#{gif.height}'/>"
 end
 
 def respond msg
