@@ -44,8 +44,9 @@ PLATFORMS
 
 DEPENDENCIES
   dogeify
+  engtagger
   giphy
   sinatra-websocket
 
 BUNDLED WITH
-   1.14.5
+   1.15.1
