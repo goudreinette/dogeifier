@@ -1,1 +1,3 @@
-require_relative "main.rb"
+require './main'
+
+run Sinatra::Application
